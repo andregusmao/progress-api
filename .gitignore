@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-/uploads/*.*
+/src/uploads
 
 # production
 /build
