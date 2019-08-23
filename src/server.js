@@ -1,5 +1,6 @@
-const express = require("express");
-const fileUpload = require("express-fileupload");
+import express from "express";
+import fileUpload from "express-fileupload";
+
 const app = express();
 
 app.use((req, res, next) => {
