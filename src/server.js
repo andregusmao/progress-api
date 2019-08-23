@@ -1,10 +1,20 @@
 const express = require("express");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 const app = express();
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "POST");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+
+  next();
+});
 
 app.use(fileUpload());
 
 app.post("/upload", (req, res) => {
+
   if (Object.keys(req.files).length == 0) {
     return res.status(400).send({ error: "No files uploaded" });
   }
@@ -18,7 +28,9 @@ app.post("/upload", (req, res) => {
       return res.status(500).send({ error });
     }
 
-    return res.status(200).send({ message: "File uploaded", name: file.name, size: file.size });
+    return res
+      .status(200)
+      .send({ message: "File uploaded", name: file.name, size: file.size });
   });
 });
 
