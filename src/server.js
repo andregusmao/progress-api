@@ -11,7 +11,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(fileUpload());
+app.use(fileUpload({
+    createParentPath: true
+}));
 
 app.post("/upload", (req, res) => {
   if (Object.keys(req.files).length == 0) {
