@@ -22,8 +22,6 @@ app.post("/upload", (req, res) => {
 
   let file = req.files.file;
 
-  console.log(file.name);
-
   file.mv(`${__dirname}/uploads/${file.name}`, error => {
     if (error) {
       return res.status(500).send({ error });
